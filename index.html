@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Inserter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image Inserter</h1>
+        <input type="text" id="image-url" placeholder="Enter image URL here">
+        <button id="add-image">Add Image</button>
+
+        <div id="image-gallery"></div>
+    </div>
+
+    <script>
+        const addImageBtn = document.getElementById('add-image');
+        const imageUrlInput = document.getElementById('image-url');
+        const imageGallery = document.getElementById('image-gallery');
+
+        // Load saved images from localStorage
+        let savedImages = JSON.parse(localStorage.getItem('savedImages')) || [];
+        savedImages.forEach(url => createImageElement(url));
+
+        addImageBtn.addEventListener('click', () => {
+            const url = imageUrlInput.value.trim();
+            if (url) {
+                createImageElement(url);
+                savedImages.push(url);
+                localStorage.setItem('savedImages', JSON.stringify(savedImages));
+                imageUrlInput.value = '';
+            }
+        });
+
+        function createImageElement(url) {
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = "Inserted Image";
+            img.title = "Click to copy URL";
+            img.addEventListener('click', () => {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert("Image URL copied to clipboard!");
+                });
+            });
+            imageGallery.appendChild(img);
+        }
+    </script>
+</body>
+</html>
