@@ -52,3 +52,11 @@ project-folder/
 
 - Only images accessible via URL can be added.
 - Images are stored in the browser’s localStorage, so clearing browser data will remove saved images.
+
+<p align="center">
+  <a href="#"><img src="https://github.com/Pantane1/nf/blob/main/public/ph.png" alt="ph-logo">
+</p>
+
+<p align="center">
+  <a href="#"><img src="http://readme-typing-svg.herokuapp.com?color=ACAF50&center=true&vCenter=true&multiline=false&lines=Built+Different" alt="pantane">
+</p>
